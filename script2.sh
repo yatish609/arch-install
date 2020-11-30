@@ -23,16 +23,16 @@ mount /dev/"$efipart" /boot/efi
 grub-install --target=x86_64-efi --bootloader-id=ARCH --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 pacman -S xorg
-pacman -S xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
-#pacman -S nautilus-sendto
+pacman -S gnome
+pacman -S nautilus-sendto
 pacman -S wget git curl
 sudo pacman -S zsh zsh-history-substring-search zsh-syntax-highlighting zsh-autosuggestions zsh-theme-powerlevel10k  --noconfirm
 sudo pacman -S libva-utils intel-media-driver libva-intel-driver libva-mesa-driver  --noconfirm
 #Fonts
 pacman -S --noconfirm ttf-droid ttf-bitstream-vera evolution-data-server ttf-liberation noto-fonts noto-fonts-cjk
-#pacman -S gnome-tweaks chrome-gnome-shell --noconfirm
+pacman -S gnome-tweaks chrome-gnome-shell --noconfirm
 #systemctl start gdm.service
-systemctl enable lightdm
+systemctl enable gdm.service
 systemctl enable NetworkManager.service
 systemctl enable bluetooth.service
 #echo "udev_log=3" >> /etc/udev/udev.conf
@@ -46,5 +46,5 @@ useradd --create-home "$uSernAme"
 passwd "$uSernAme"
 usermod --append --groups wheel "$uSernAme"
 sudo sed --in-place 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+ALL\)/\1/' /etc/sudoers
-#sudo pacman -R gnome-photos gnome-maps gnome-books epiphany gnome-music gnome-boxes
+sudo pacman -R gnome-photos gnome-maps gnome-books epiphany gnome-music gnome-boxes
 exit
