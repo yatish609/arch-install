@@ -1,5 +1,5 @@
-mainpart=sdb2 #Partition where OS is to be installed
-swappart=sda2 #SWAP Partition
+mainpart=nvme0n1p3 #Partition where OS is to be installed
+swappart=nvme0n1p2 #SWAP Partition
 sudo mkswap /dev/"$swappart"
 sudo swapon /dev/"$swappart"
 

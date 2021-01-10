@@ -1,5 +1,5 @@
-mainpart=nvme0n1p2
-swappart=nvme0n1p3 #SWAP Partition
+mainpart=nvme0n1p3
+swappart=nvme0n1p2 #SWAP Partition
 mkfs.btrfs -f /dev/"$mainpart"
 mount /dev/"$mainpart" /mnt
 btrfs su cr /mnt/@root
