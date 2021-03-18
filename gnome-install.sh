@@ -50,7 +50,7 @@ pacman -S gnome
 pacman -S xdg-utils ntfs-3g nautilus-sendto
 
 #ZSH
-sudo pacman -S zsh  --noconfirm
+sudo pacman -S zsh --noconfirm
 
 #Intel Drivers
 sudo pacman -S libva-utils intel-media-driver libva-intel-driver libva-mesa-driver  --noconfirm
