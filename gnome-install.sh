@@ -47,10 +47,10 @@ pacman -S xorg
 pacman -S gnome
 
 #Gnome Patches
-pacman -S nautilus-sendto
+pacman -S xdg-utils ntfs-3g nautilus-sendto
 
 #ZSH
-sudo pacman -S zsh zsh-history-substring-search zsh-syntax-highlighting zsh-autosuggestions zsh-theme-powerlevel10k  --noconfirm
+sudo pacman -S zsh  --noconfirm
 
 #Intel Drivers
 sudo pacman -S libva-utils intel-media-driver libva-intel-driver libva-mesa-driver  --noconfirm
@@ -69,8 +69,11 @@ systemctl enable gdm.service
 systemctl enable NetworkManager.service
 systemctl enable bluetooth.service
 
+#Install Nvidia
+sudo pacman -S nvidia nvidia-settings nvidia-prime
+
 #Set Up SWAP Hibernate
-VAL="\"quiet vt.global_cursor_default=0 rd.loglevel=0 systemd.show_status=false rd.udev.log-priority=0 udev.log-priority=0 \""
+VAL="\"quiet vt.global_cursor_default=0 rd.loglevel=0 systemd.show_status=false rd.udev.log-priority=0 udev.log-priority=0 nvidia-drm.modeset=1 \""
 sed -i "s/^\(GRUB_CMDLINE_LINUX_DEFAULT\s*=\s*\).*\$/\1$VAL/" /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -82,5 +85,5 @@ sudo sed --in-place 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+ALL\)/\1/' /etc/sudoers
 
 
 #Exit Script
-rm -r /script2.sh
+rm -r /gnome-install.sh
 exit
